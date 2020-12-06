@@ -1,9 +1,11 @@
 {
   "pages": [
-    "pages/home/home",
     "pages/index/index",
+    "pages/home/home",
     "pages/info/info",
-    "pages/article/article"
+    "pages/article/article",
+    "pages/categories/categories",
+    "pages/timeline/timeline"
   ],
   "window": {
     "backgroundTextStyle": "light",

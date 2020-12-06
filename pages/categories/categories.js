@@ -1,55 +1,9 @@
-const app = getApp()
-
+const app = getApp();
 Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    Custom: app.globalData.Custom,
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    TabCur: 1,
-    scrollLeft: 0,
-    StatusBar: app.globalData.StatusBar,
-    CustomBar: app.globalData.CustomBar,
     hidden: true
-  },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-
-  /**
-   *  ------------------------------something new---------------------------
-   **/
-  navToTimeLine(e) {
-    wx.navigateTo({
-      url: '/pages/timeline/timeline',
-    })
-  },
-
-  /**
-   *  -----------------------------------end----------------------------------
-   **/
-  showModal(e) {
-    this.setData({
-      modalName: e.currentTarget.dataset.target
-    })
-  },
-  hideModal(e) {
-    this.setData({
-      modalName: null
-    })
-  },
-  tabSelect(e) {
-    console.log(e);
-    this.setData({
-      TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
-    })
   },
   onLoad() {
     let list = [];
@@ -131,4 +85,4 @@ Page({
       }
     }
   }
-})
+});
