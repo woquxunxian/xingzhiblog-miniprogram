@@ -1,0 +1,50 @@
+
+<scroll-view scroll-y class="DrawerPage {{modalName=='viewModal'?'show':''}}">
+	<cu-custom bgColor="bg-gradual-blue">
+		<view slot="content">Xingzhi's Blog</view>
+	</cu-custom>			
+	<view class='padding margin-xs text-center'>
+    <view class='cu-btn round bg-gradual-blue shadow' bindtap="showModal" data-target="viewModal">
+			博客简介
+    </view>
+    <view class='cu-btn round bg-gradual-blue shadow margin-left' bindtap="showModal" data-target="viewModal">
+			作者简介
+    </view>
+	</view>
+	<view class="cu-list menu card-menu margin-top-xs margin-bottom-xl shadow-lg">
+		<view class="cu-item arrow" wx:for="{{20}}" wx:key="index">
+			<view class="content">
+				<text class="cuIcon-github text-grey"></text>
+				<text class="text-grey">{{index +1}}</text>
+			</view>
+		</view>
+	</view>
+</scroll-view>
+
+<view class="DrawerClose {{modalName=='viewModal'?'show':''}}" bindtap="hideModal">
+	<text class="cuIcon-pullright"></text>
+</view>
+<scroll-view scroll-y class="DrawerWindow {{modalName=='viewModal'?'show':''}}">
+	<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
+		<view class="cu-item arrow" wx:for="{{20}}" wx:key="index">
+			<view class="content">
+				<text class="cuIcon-github text-grey"></text>
+				<text class="text-grey">{{index +1}}</text>
+			</view>
+		</view>
+  </view>
+</scroll-view>
+
+<view class="DrawerClose {{modalName=='viewModal'?'show':''}}" bindtap="hideModal">
+	<text class="cuIcon-pullright"></text>
+</view>
+<scroll-view scroll-y class="DrawerWindow {{modalName=='viewModal'?'':''}}">
+	<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
+		<view class="cu-item arrow" wx:for="{{20}}" wx:key="index">
+			<view class="content">
+			  <text class="cuIcon-github text-grey"></text>
+				<text class="text-grey">{{index +1}}</text>
+			</view>
+		</view>
+	</view>
+</scroll-view>
