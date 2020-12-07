@@ -1,3 +1,4 @@
+/* colror-ui */
 page {
   background-image: var(--gradualBlue);
   width: 100vw;
@@ -100,4 +101,15 @@ page {
 
 .DrawerPage .cu-bar.tabbar .action {
   flex: initial;
+}
+
+/* xingzhi */
+.back-icon{
+  z-index: 1;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

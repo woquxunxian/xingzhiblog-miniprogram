@@ -62,17 +62,17 @@ Page({
     })
   },
   onReady() {
-    let that = this;
-    wx.createSelectorQuery().select('.indexBar-box').boundingClientRect(function(res) {
-      that.setData({
-        boxTop: res.top
-      })
-    }).exec();
-    wx.createSelectorQuery().select('.indexes').boundingClientRect(function(res) {
-      that.setData({
-        barTop: res.top
-      })
-    }).exec()
+    // let that = this;
+    // wx.createSelectorQuery().select('.indexBar-box').boundingClientRect(function(res) {
+    //   that.setData({
+    //     boxTop: res.top
+    //   })
+    // }).exec();
+    // wx.createSelectorQuery().select('.indexes').boundingClientRect(function(res) {
+    //   that.setData({
+    //     barTop: res.top
+    //   })
+    // }).exec()
   },
   //获取文字信息
   getCur(e) {

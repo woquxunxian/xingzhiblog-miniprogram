@@ -67,28 +67,94 @@
 <view class="DrawerClose {{modalName=='showBlogInfo'?'show':''}}" bindtap="hideModal">
 	<text class="cuIcon-pullright"></text>
 </view>
-<scroll-view scroll-y class="DrawerWindow {{modalName=='showBlogInfo'?'show':''}}">
-	<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
-		<view class="cu-item arrow" wx:for="{{20}}" wx:key="index">
-			<view class="content">
-				<text class="cuIcon-github text-grey"></text>
-				<text class="text-grey">{{index +1}}6666</text>
+<view class="DrawerWindow {{modalName=='showBlogInfo'?'show':''}} margin-top-xl">
+	<view class="info-card">
+		<image class="cu-avatar xl round" style="margin-top: 150rpx" src="/images/avatar.jpg"></image>
+		<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
 			</view>
-		</view>
-  </view>
-</scroll-view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
+			</view>
+  	</view>
+	</view>
+</view>
 
 <!-- 作者简介 -->
 <view class="DrawerClose {{modalName=='showAuthorInfo'?'show':''}}" bindtap="hideModal">
 	<text class="cuIcon-pullright"></text>
 </view>
-<scroll-view scroll-y class="DrawerWindow {{modalName=='showAuthorInfo'?'show':''}}">
-	<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
-		<view class="cu-item arrow" wx:for="{{20}}" wx:key="index">
-			<view class="content">
-			  <text class="cuIcon-github text-grey"></text>
-				<text class="text-grey">{{index +1}}777</text>
+<view class="DrawerWindow {{modalName=='showAuthorInfo'?'show':''}} margin-top-xl">
+	<view class="info-card">
+		<image class="cu-avatar xl round" style="margin-top: 150rpx" src="/images/avatar.jpg"></image>
+		<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
 			</view>
-		</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content" open-type="feedback">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">意见反馈</text>
+				</button>
+			</view>
+  	</view>
 	</view>
-</scroll-view>
+</view>
