@@ -1,11 +1,11 @@
-<cu-custom bgImage="https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">索引</view>
+  <view slot="content">分类</view>
 </cu-custom>
 <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
   <view class="search-form round">
     <text class="cuIcon-search"></text>
-    <input type="text" placeholder="输入搜索的关键词" confirm-type="search"></input>
+    <input type="text" placeholder="在这输入关键字" confirm-type="search"></input>
   </view>
   <view class="action">
     <button class="cu-btn bg-gradual-green shadow-blur round" style="width:120rpx;">搜索</button>

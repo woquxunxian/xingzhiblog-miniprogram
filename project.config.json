@@ -76,6 +76,12 @@
         {
           "name": "pages/categories/categories",
           "pathName": "pages/categories/categories",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/timeline/timeline",
+          "pathName": "pages/timeline/timeline",
           "scene": null
         }
       ]

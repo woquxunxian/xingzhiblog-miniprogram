@@ -2,7 +2,7 @@
 <view scroll-y class="DrawerPage {{modalName=='showBlogInfo'?'show':''}} {{modalName=='showAuthorInfo'?'show':''}}">
 	<!-- 顶部栏 -->
 	<cu-custom bgColor="bg-gradual-blue">
-		<view slot="content">Xingzhi's Blog</view>
+		<view slot="content">行之Blog</view>
 	</cu-custom>	
 	<!-- 搜索框 -->
 	<view class="cu-bar bg-white search">
@@ -22,7 +22,7 @@
     <view class='cu-btn round bg-gradual-blue shadow margin-left' bindtap="showModal" data-target="showAuthorInfo">
 			作者简介
     </view>
-		<view class='cu-btn round bg-gradual-blue shadow margin-left' bindtap="showModal" data-target="showCategories">
+		<view class='cu-btn round bg-gradual-blue shadow margin-left' bindtap="navToCataegories">
 			分类
     </view>
 		<view class='cu-btn round bg-gradual-blue shadow margin-left' bindtap="navToTimeLine">
@@ -72,31 +72,37 @@
 		<image class="cu-avatar xl round" style="margin-top: 150rpx" src="/images/avatar.jpg"></image>
 		<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
 			<view class="cu-item arrow">
-				<button class="cu-btn content" open-type="feedback">
+				<button class="cu-btn content">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">关于作者</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">作者的github</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">作者的gitee</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content">
 					<text class="cuIcon-writefill text-cyan"></text>
 					<text class="text-grey">意见反馈</text>
 				</button>
 			</view>
 			<view class="cu-item arrow">
-				<button class="cu-btn content" open-type="feedback">
+				<button class="cu-btn content">
 					<text class="cuIcon-writefill text-cyan"></text>
 					<text class="text-grey">意见反馈</text>
 				</button>
 			</view>
 			<view class="cu-item arrow">
-				<button class="cu-btn content" open-type="feedback">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">意见反馈</text>
-				</button>
-			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content" open-type="feedback">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">意见反馈</text>
-				</button>
-			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content" open-type="feedback">
+				<button class="cu-btn content">
 					<text class="cuIcon-writefill text-cyan"></text>
 					<text class="text-grey">意见反馈</text>
 				</button>
@@ -120,33 +126,21 @@
 		<image class="cu-avatar xl round" style="margin-top: 150rpx" src="/images/avatar.jpg"></image>
 		<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
 			<view class="cu-item arrow">
-				<button class="cu-btn content" open-type="feedback">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">意见反馈</text>
+				<button class="cu-btn content">
+					<text class="cuIcon-peoplefill text-cyan"></text>
+					<text class="text-grey">关于作者</text>
 				</button>
 			</view>
 			<view class="cu-item arrow">
-				<button class="cu-btn content" open-type="feedback">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">意见反馈</text>
+				<button class="cu-btn content">
+					<text class="cuIcon-github text-cyan"></text>
+					<text class="text-grey">作者的github</text>
 				</button>
 			</view>
 			<view class="cu-item arrow">
-				<button class="cu-btn content" open-type="feedback">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">意见反馈</text>
-				</button>
-			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content" open-type="feedback">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">意见反馈</text>
-				</button>
-			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content" open-type="feedback">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">意见反馈</text>
+				<button class="cu-btn content">
+					<text class="cuIcon-github text-cyan"></text>
+					<text class="text-grey">作者的gitee</text>
 				</button>
 			</view>
 			<view class="cu-item arrow">
