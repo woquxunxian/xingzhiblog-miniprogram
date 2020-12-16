@@ -26,7 +26,8 @@
       <image class="item-ava" src="{{avatar}}"></image>    
       <text class="name-title">{{name}}</text>
       <view class="heart_">
-        <!-- <text class="cuIcon-likefill lg text-red"></text> -->
+        <text class="cuIcon-likefill lg text-red"></text>
+        <text>{{heart_num}}</text>
         <text class="cuIcon-likefill lg text-red"></text>
         <text>{{heart_num}}</text>
       </view>

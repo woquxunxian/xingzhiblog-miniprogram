@@ -56,11 +56,6 @@
   flex: 1;
   margin-left: 10rpx;
   margin-right: 10rpx;
-  /* text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden; */
 }
 .name text:last-child{
   flex: 0 0 30rpx;

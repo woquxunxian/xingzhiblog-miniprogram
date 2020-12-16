@@ -1,6 +1,7 @@
 var app = getApp()
 Page({
   data: {
+    num:null,
     note:[
       {
         name: '大脸猫爱吃鱼',
@@ -56,5 +57,6 @@ Page({
         url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
         avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
       }
-    ]}
+    ]
+  }
 })
