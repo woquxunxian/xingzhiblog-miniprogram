@@ -8,7 +8,7 @@
 
 ### 需求分析
 
-<img src="http://qiniupublic.qingpingyue.top/%E8%A1%8C%E4%B9%8BBlog%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE.png"></img>
+<img src="http://qiniupublic.qingpingyue.top/%E8%A1%8C%E4%B9%8BBlog%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE.png"/>
 
 目前画的思维导图，可能不太规范....
 
@@ -24,9 +24,9 @@
 
 | 主页                                                         | 博客简介                                                     | 作者简介                                                     |
 | :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img src="http://qiniupublic.qingpingyue.top/xingzhi-blog-2.jpg"></img> | <img src="http://qiniupublic.qingpingyue.top/xingzhi-blog-4.jpg"></img> | <img src="http://qiniupublic.qingpingyue.top/xingzhi-blog-3.jpg"></img> |
+| <img src="http://qiniupublic.qingpingyue.top/xingzhi-blog-2.jpg"/> | <img src="http://qiniupublic.qingpingyue.top/xingzhi-blog-4.jpg"/> | <img src="http://qiniupublic.qingpingyue.top/xingzhi-blog-3.jpg"/> |
 | **分类标签页**                                               | **归档页**                                                   |                                                              |
-| <img src="http://qiniupublic.qingpingyue.top/xingzhi-blog-5.jpg"></img> | <img src="http://qiniupublic.qingpingyue.top/xingzhi-blog-1.jpg"></img> |                                                              |
+| <img src="http://qiniupublic.qingpingyue.top/xingzhi-blog-5.jpg"/> | <img src="http://qiniupublic.qingpingyue.top/xingzhi-blog-1.jpg"/> |                                                              |
 
 ### 管理后台展示
 
