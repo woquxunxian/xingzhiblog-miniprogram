@@ -11,7 +11,9 @@ Page({
     scrollLeft: 0,
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    hidden: true
+    hidden: true,
+    blogInfo: "",
+    infoModal:"",
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -40,6 +42,7 @@ Page({
     })
   },
   onLoad() {
+    this.getAllInfoById();
     let list = [];
     for (let i = 0; i < 26; i++) {
       list[i] = String.fromCharCode(65 + i)
@@ -113,6 +116,46 @@ Page({
   /**
    *  ------------------------------ xingzhi ---------------------------
    **/
+
+  getAllInfoById(id) {
+    wx.request({
+      url: 'http://localhost:8081/info/blog',
+      data: {
+        id: 1
+      },
+      method: 'GET',
+      success: res => {
+        let blogInfo = res.data.data;
+        this.setData({
+          blogInfo,
+        })
+        app.blogInfo = blogInfo;
+      },
+      fail: err => {
+        wx.showToast({
+          title: '博客信息获取失败',
+          icon: 'none'
+        })
+      }
+    })
+  },
+
+  showInfoModal(e) {
+    let target = e.currentTarget.dataset.target;
+    this.setData({
+      infoModal: target,
+    })
+  },
+
+  hideInfoModal(e) {
+    this.setData({
+      infoModal: null
+    })
+  },
+
+  longTapCopy(e) {
+    
+  },
 
   navToCataegories(e) {
     wx.navigateTo({

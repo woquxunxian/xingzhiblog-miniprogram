@@ -69,46 +69,22 @@
 </view>
 <view class="DrawerWindow {{modalName=='showBlogInfo'?'show':''}} margin-top-xl">
 	<view class="info-card">
-		<image class="cu-avatar xl round" style="margin-top: 150rpx" src="/images/avatar.jpg"></image>
+		<image class="cu-avatar xl round" style="margin-top: 150rpx" src="{{blogInfo.blogLogo}}"></image>
 		<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
 			<view class="cu-item arrow">
-				<button class="cu-btn content">
+				<button class="cu-btn content" data-target="showBlogInfo" bindtap="showInfoModal">
 					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">关于作者</text>
+					<text class="text-grey">关于博客</text>
+				</button>
+			</view>
+			<view class="cu-item arrow">
+				<button class="cu-btn content" data-target="showBlogCodeHub" bindtap="showInfoModal">
+					<text class="cuIcon-writefill text-cyan"></text>
+					<text class="text-grey">博客开源仓库地址</text>
 				</button>
 			</view>
 			<view class="cu-item arrow">
 				<button class="cu-btn content">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">作者的github</text>
-				</button>
-			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">作者的gitee</text>
-				</button>
-			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">意见反馈</text>
-				</button>
-			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">意见反馈</text>
-				</button>
-			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content">
-					<text class="cuIcon-writefill text-cyan"></text>
-					<text class="text-grey">意见反馈</text>
-				</button>
-			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content" open-type="feedback">
 					<text class="cuIcon-writefill text-cyan"></text>
 					<text class="text-grey">意见反馈</text>
 				</button>
@@ -123,24 +99,24 @@
 </view>
 <view class="DrawerWindow {{modalName=='showAuthorInfo'?'show':''}} margin-top-xl">
 	<view class="info-card">
-		<image class="cu-avatar xl round" style="margin-top: 150rpx" src="/images/avatar.jpg"></image>
+		<image class="cu-avatar xl round" style="margin-top: 150rpx" src="{{blogInfo.authorAvatar}}"></image>
 		<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
 			<view class="cu-item arrow">
-				<button class="cu-btn content">
+				<button class="cu-btn content" data-target="showAuthorInfo" bindtap="showInfoModal">
 					<text class="cuIcon-peoplefill text-cyan"></text>
 					<text class="text-grey">关于作者</text>
 				</button>
 			</view>
 			<view class="cu-item arrow">
-				<button class="cu-btn content">
+				<button class="cu-btn content" data-target="showCodeHub" bindtap="showInfoModal">
 					<text class="cuIcon-github text-cyan"></text>
-					<text class="text-grey">作者的github</text>
+					<text class="text-grey">作者的开源仓库</text>
 				</button>
 			</view>
 			<view class="cu-item arrow">
-				<button class="cu-btn content">
+				<button class="cu-btn content" data-target="showComunication" bindtap="showInfoModal">
 					<text class="cuIcon-github text-cyan"></text>
-					<text class="text-grey">作者的gitee</text>
+					<text class="text-grey">与作者交流</text>
 				</button>
 			</view>
 			<view class="cu-item arrow">
@@ -151,4 +127,129 @@
 			</view>
   	</view>
 	</view>
+</view>
+
+<!-- 博客简介模态窗 -->
+<view class="cu-modal {{infoModal=='showBlogInfo'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">关于博客</view>
+      <view class="action" bindtap="hideInfoModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+		</view>
+		<view class="padding text-center">
+			<view class="padding-lr bg-white">
+				<view class="solid-bottom padding">
+					<text class="text">欢迎光临~</text>
+				</view>
+				<view class="padding">
+					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">博客名：{{blogInfo.blogName}}</view>
+					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">博客简介：{{blogInfo.blogIntroduction}}</view>
+				</view>
+			</view>
+		</view>
+  </view>
+</view>
+<view class="cu-modal {{infoModal=='showBlogCodeHub'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">博客开源仓库地址</view>
+      <view class="action" bindtap="hideInfoModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding text-center">
+			<view class="padding-lr bg-white">
+				<view class="solid-bottom padding">
+					<text class="text">很高兴认识你~</text>
+				</view>
+				<view class="padding">
+					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">
+						<text selectable="true">GitHub：{{blogInfo.blogGithubLink}}</text>
+					</view>
+					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">
+						<text selectable="true">Gitee：{{blogInfo.blogGiteeLink}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+  </view>
+</view>
+
+<!-- 作者简介模态窗 -->
+<view class="cu-modal {{infoModal=='showAuthorInfo'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">关于作者</view>
+      <view class="action" bindtap="hideInfoModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+		</view>
+		<view class="padding text-center">
+			<view class="padding-lr bg-white">
+				<view class="solid-bottom padding">
+					<text class="text">很高兴认识你~</text>
+				</view>
+				<view class="padding">
+					<view class="text bg-grey padding radius margin-top-xs" bindlongtap="longTapCopy" selectable='true'
+					style="width:500rpx">作者名：{{blogInfo.authorName}}</view>
+					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">年龄：{{blogInfo.authorAge}}</view>
+					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">自我介绍：{{blogInfo.authorIntroduction}}</view>
+					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">在读学校：{{blogInfo.authorSchool}}</view>
+					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">现居地：{{blogInfo.authorAdress}}</view>
+				</view>
+			</view>
+		</view>
+  </view>
+</view>
+<view class="cu-modal {{infoModal=='showCodeHub'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">作者的开源仓库</view>
+      <view class="action" bindtap="hideInfoModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+		</view>
+		<view class="padding text-center">
+			<view class="padding-lr bg-white">
+				<view class="solid-bottom padding">
+					<text class="text">很高兴认识你~</text>
+				</view>
+				<view class="padding">
+					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">
+						<text selectable="true">GitHub：{{blogInfo.authorGithubLink}}</text>
+					</view>
+					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">
+						<text selectable="true">Gitee：{{blogInfo.authorGiteeLink}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+  </view>
+</view>
+<view class="cu-modal {{infoModal=='showComunication'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">与作者交流</view>
+      <view class="action" bindtap="hideInfoModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding text-center">
+			<view class="padding-lr bg-white">
+				<view class="solid-bottom padding">
+					<text class="text">很高兴认识你~</text>
+				</view>
+				<view class="padding">
+					<view class="text bg-grey padding radius margin-top-xs"style="width:500rpx">
+						<text selectable='true'>作者微信：{{blogInfo.authorWechatNumber}}</text>
+					</view>
+					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">
+						<image class="padding" style="width:400rpx; height:400rpx;" src="{{blogInfo.authorQrcode}}"/>
+					</view>
+				</view>
+			</view>
+		</view>
+  </view>
 </view>
