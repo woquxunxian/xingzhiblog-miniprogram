@@ -1,4 +1,5 @@
 const app = getApp()
+const apiService = require('../../utils/requestUtil')
 
 Page({
   data: {
@@ -12,7 +13,7 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     hidden: true,
-    blogInfo: "",
+    blogInfo: null,
     infoModal:"",
   },
   getUserInfo: function (e) {
@@ -25,6 +26,9 @@ Page({
   },
 
   showModal(e) {
+    if (this.data.blogInfo == null) {
+      this.getAllInfoById();
+    }
     this.setData({
       modalName: e.currentTarget.dataset.target
     })
@@ -42,7 +46,7 @@ Page({
     })
   },
   onLoad() {
-    this.getAllInfoById();
+    // this.getAllInfoById();
     let list = [];
     for (let i = 0; i < 26; i++) {
       list[i] = String.fromCharCode(65 + i)
@@ -118,25 +122,19 @@ Page({
    **/
 
   getAllInfoById(id) {
-    wx.request({
-      url: 'http://localhost:8081/info/blog',
-      data: {
-        id: 1
-      },
-      method: 'GET',
-      success: res => {
-        let blogInfo = res.data.data;
-        this.setData({
-          blogInfo,
-        })
-        app.blogInfo = blogInfo;
-      },
-      fail: err => {
-        wx.showToast({
-          title: '博客信息获取失败',
-          icon: 'none'
-        })
-      }
+    apiService.get('/info/blog', {id:1})
+    .then (res => {
+      let blogInfo = res.data.data;
+      this.setData({
+        blogInfo,
+      })
+      app.blogInfo = blogInfo;
+    })
+    .catch (err => {
+      wx.showToast({
+        title: '博主数据获取失败',
+        icon: 'none'
+      })
     })
   },
 
@@ -153,8 +151,11 @@ Page({
     })
   },
 
-  longTapCopy(e) {
-    
+  showLoading(e) {
+    wx.showToast({
+      title: '数据加载中...',
+      icon: 'none'
+    })
   },
 
   navToCataegories(e) {
