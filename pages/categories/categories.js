@@ -25,7 +25,7 @@ Page({
   },
 
   getAllTag(){
-    apiService.get("/blog/tag/all", {})
+    apiService.get("/tag/all", {})
     .then(res => {
       console.log(res);
       let tagList = res.data.data;

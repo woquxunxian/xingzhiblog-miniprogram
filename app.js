@@ -14,7 +14,7 @@ App({
   globalData: {
     userInfo: null,
     blogInfo: null,
-    baseUrl: "https://www.qingpingyue.top:8081",
-    // baseUrl: "http://localhost:8081",
+    // baseUrl: "https://www.qingpingyue.top:8081",
+    baseUrl: "http://localhost:8081",
   }
 })

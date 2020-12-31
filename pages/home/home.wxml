@@ -30,28 +30,37 @@
 		</view>
 	</view>
 	<!-- 文章列表 -->
-	<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
-  <block wx:for="{{list}}" wx:key>
+	<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" 
+	style="height:calc(100vh - {{CustomBar}}px - 130px);" 
+	scroll-with-animation="true" enable-back-to-top="true">
+  <block wx:for="{{blogList}}" wx:key>
 		<view class="cu-card case">
   		<view class="cu-item shadow">
     		<view class="image">
-      		<image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="widthFix"></image>
-      		<view class="cu-tag bg-blue">史诗</view>
+					<image src="{{item.image}}" mode="widthFix"></image>
+					<!-- <view wx:for="{{item.tagDtoList}}">
+						<view class="cu-tag radius bg-blue">{{item.tagName}}</view>
+					</view> -->
       		<view class="cu-bar bg-shadeBottom">
-        		<text class="text-cut">我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。我已天理为凭，踏入这片荒芜，不再受凡人的枷锁遏制。</text>
-      		</view>
-    		</view>
+        		<text class="text-cut">{{item.title}}</text>
+					</view>
+				</view>
+				<view class="flex flex-wrap">
+					<view class="padding-xs-tl" wx:for="{{item.tagDtoList}}" wx:key>
+						<view class="cu-tag radius light" 
+						style="background-color:{{item.color}}; color:white">{{item.tagName}}</view>
+					</view>
+				</view>
     		<view class="cu-list menu-avatar">
       		<view class="cu-item">
-        		<view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
+        		<image class="cu-avatar round lg" src="{{item.userListVo.avatar}}"/>
         		<view class="content flex-sub">
-          		<view class="text-grey">正义天使 凯尔</view>
-         			<view class="text-gray text-sm flex justify-between">
-            	十天前
+          		<view class="text-grey">{{item.userListVo.userName}}</view>
+         			<view class="text-gray text-sm flex justify-between">{{item.createTime}}
             		<view class="text-gray text-sm">
-									<text class="cuIcon-attentionfill margin-lr-xs"></text> 10
-									<text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
-									<text class="cuIcon-messagefill margin-lr-xs"></text> 30
+									<text class="cuIcon-attentionfill margin-left-xs"></text> {{item.viewCount>999?"999+":item.viewCount}}
+									<text class="cuIcon-appreciatefill margin-left-xs"></text> {{item.likeCount>999?"999+":item.likeCount}}
+									<text class="cuIcon-messagefill margin-left-xs"></text> {{item.commentCount>99?"99+":item.commentCount}}
             		</view>
           		</view>
         		</view>
@@ -59,7 +68,15 @@
     		</view>
   		</view>
 		</view>
-  </block>
+	</block>
+	<view class="solids-bottom padding-xs flex align-center">
+    <view class="flex-sub text-center">
+      <view class="text-sm padding">
+        <text class="text-grey">“UI框架--Color-UI2.0”</text>
+      </view>
+      <!-- <view class="padding">页面辅助信息，次级内容等</view> -->
+    </view>
+  </view>
 	</scroll-view>
 </view>
 

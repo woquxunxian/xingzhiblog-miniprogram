@@ -47,6 +47,7 @@ Page({
   },
   onLoad() {
     // this.getAllInfoById();
+    this.getArticleList();
     let list = [];
     for (let i = 0; i < 26; i++) {
       list[i] = String.fromCharCode(65 + i)
@@ -122,7 +123,7 @@ Page({
    **/
 
   getAllInfoById(id) {
-    apiService.get('/info/blog', {id:1})
+    apiService.get('/info/all')
     .then (res => {
       let blogInfo = res.data.data;
       this.setData({
@@ -133,6 +134,24 @@ Page({
     .catch (err => {
       wx.showToast({
         title: '博主数据获取失败',
+        icon: 'none'
+      })
+    })
+  },
+
+  getArticleList(e) {
+    apiService.get('/article/all')
+    .then (res => {
+      let blogList = res.data.data;
+      console.log(res)
+      this.setData({
+        blogList,
+      })
+    })
+    .catch (err => {
+      console.log(err)
+      wx.showToast({
+        title: '文章列表获取失败',
         icon: 'none'
       })
     })

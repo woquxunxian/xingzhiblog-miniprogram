@@ -14,6 +14,6 @@
 <view class="padding-sm flex flex-wrap">
   <view class="padding-xs" wx:for="{{tagList}}" wx:key>
     <view class="cu-tag radius light" 
-    style="background-color:{{item.color}}; color:white">{{item.name}}</view>
+    style="background-color:{{item.color}}; color:white">{{item.tagName}}</view>
   </view>
 </view>
