@@ -1,1 +1,19 @@
-/* pages/article/article.wxss */
+.comment {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment .info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.comment .info .name {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment .content {
+
+}

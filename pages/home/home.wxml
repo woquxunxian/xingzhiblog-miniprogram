@@ -30,17 +30,16 @@
 		</view>
 	</view>
 	<!-- 文章列表 -->
-	<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" 
+	<scroll-view scroll-y class="indexes" 
 	style="height:calc(100vh - {{CustomBar}}px - 130px);" 
 	scroll-with-animation="true" enable-back-to-top="true">
-  <block wx:for="{{blogList}}" wx:key>
+  <block wx:for="{{blogList}}" wx:key="{{index}}">
 		<view class="cu-card case">
   		<view class="cu-item shadow">
-    		<view class="image">
-					<image src="{{item.image}}" mode="widthFix"></image>
-					<!-- <view wx:for="{{item.tagDtoList}}">
-						<view class="cu-tag radius bg-blue">{{item.tagName}}</view>
-					</view> -->
+				<view class="image" catchtap="navToArticle"
+					data-avatar="{{item.userListVo.avatar}}" data-createTime="{{item.createTime}}" 
+					data-nickName="{{item.userListVo.userName}}" data-blogId="{{item.id}}">
+				<image src="{{item.image}}" mode="widthFix"></image>
       		<view class="cu-bar bg-shadeBottom">
         		<text class="text-cut">{{item.title}}</text>
 					</view>

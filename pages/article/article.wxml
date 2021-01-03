@@ -1,2 +1,64 @@
-<!--pages/article/article.wxml-->
-<text>pages/article/article.wxml</text>
+<!-- 顶部栏 -->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">文章详情</view>
+</cu-custom>
+<!-- 作者信息 -->
+<view class="padding-sm">
+  <view class="cu-list menu-avatar padding-xs radius shadow bg-white">
+    <view class="cu-item">
+      <image class="cu-avatar round lg" src="{{avatar}}"/>
+      <view class="content flex-sub">
+        <view>{{nickName}}</view>
+        <view class="text-gray text-sm flex justify-between">
+          {{createTime}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 文章内容 -->
+  <view class="radius shadow bg-white margin-top-sm padding-xl">
+    <!-- <rich-text nodes="{{articleContent}}"></rich-text> -->
+    <wemark md="{{articleContent}}" link highlight type="wemark"></wemark>
+  </view>
+  <!-- 评论区 -->
+  <view class="radius shadow bg-white margin-top-sm padding-xl">
+    <view>评论区</view>
+    <block wx:for="{{articleCommentVOList}}">
+      <view class="comment radius shadow bg-white padding-sm margin-top-sm">
+        <view class="info">
+          <image class="cu-avatar round sm margin-left-sm" src="{{item.userListVo.avatar}}"></image>
+          <view class="name margin-left-sm">
+            <view class="text-sm">{{item.userListVo.userName}}</view>
+            <view class="text-gray text-sm">{{item.createTime}}</view>
+          </view>
+        </view>
+        <view class="content margin-left-sm margin-top-sm">
+          {{item.commentContent}}
+        </view>
+        <block wx:for="{{item.articleCommentVOList}}">
+          <template is="commentTemplate" data="{{...item}}"/>
+        </block>
+      </view>
+      <!-- <template is="commentTemplate" data="{{...item}}"/> -->
+    </block>
+  </view>
+</view>
+
+<template name="commentTemplate">
+  <view class="comment radius shadow bg-white padding-sm margin-top-sm">
+    <view class="info">
+      <image class="cu-avatar round sm margin-left-sm" src="{{userListVo.avatar}}"></image>
+      <view class="name margin-left-sm">
+        <view class="text-sm">{{userListVo.userName}}</view>
+        <view class="text-gray text-sm">{{createTime}}</view>
+      </view>
+    </view>
+    <view class="content margin-left-sm margin-top-sm">
+      {{commentContent}}
+    </view>
+    <!-- <block wx:for="{{articleCommentVOList}}">
+      <template is="commentTemplate" data="{{...item}}"/>
+    </block> -->
+  </view>
+</template>

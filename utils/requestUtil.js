@@ -12,7 +12,6 @@ const request = (url, options) => {
             data: options.data,
             header: {
                 'content-type': options.isObj ? 'application/json' : 'application/x-www-form-urlencoded',
-                // 'x-token': 'x-token'  
             },
             success(res) {
                 console.log(url + " : success");

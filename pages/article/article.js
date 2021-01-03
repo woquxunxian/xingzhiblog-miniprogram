@@ -1,66 +1,47 @@
-// pages/article/article.js
+const app = getApp()
+const apiService = require('../../utils/requestUtil')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    md: "- awdnjwad",
+    articleContent: "<table class='ui celled table'><thead><tr><th>hello</th><th>hi</th><th>哈哈哈</th></tr></thead><tbody><tr><td>斯维尔多</td><td>士大夫</td><td>f啊</td></tr><tr><td>阿什顿发</td><td>非固定杆</td><td>撒阿什顿发</td></tr></tbody></table>"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      nickName: options.nickName,
+      avatar: options.avatar,
+      createTime: options.createTime
+    })
+    this.getBlogDeatil(options.blogId)
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getBlogDeatil(blogId) {
+    let data = {
+      blogId,
+    }
+    apiService.get("/article/content", data)
+    .then(res => {
+      this.getBlogDeatilSuccees(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  getBlogDeatilSuccees(res) {
+    this.setData({
+      articleContent: res.data.data.articleContent,
+      articleCommentVOList: res.data.data.articleCommentVOList
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
