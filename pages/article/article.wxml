@@ -3,8 +3,9 @@
   <view slot="backText">返回</view>
   <view slot="content">文章详情</view>
 </cu-custom>
-<!-- 作者信息 -->
-<view class="padding-sm">
+<!-- 页面主体 -->
+<view class="padding-sm margin-bottom-xl" style="margin-bottom: 100rpx">
+  <!-- 作者信息 -->
   <view class="cu-list menu-avatar padding-xs radius shadow bg-white">
     <view class="cu-item">
       <image class="cu-avatar round lg" src="{{avatar}}"/>
@@ -43,6 +44,19 @@
       <!-- <template is="commentTemplate" data="{{...item}}"/> -->
     </block>
   </view>
+</view>
+<!-- 底部评论输入、点赞、收藏栏 -->
+<view class="cu-bar tabbar bg-white shadow foot margin-left-sm" style="width:95%">
+  <view class="search-form round">
+    <input type="text" placeholder="输入评论" confirm-type="search" class="padding-left-sm"
+           bindinput="getSearchBoxValue" value="{{searchValue}}"/>
+  </view>
+  <button class="cu-btn bg-gradual-blue shadow-blur round" style="width:120rpx;"
+          bindtap="onSend">发送</button>
+  <image class="icon margin-right-sm" bindtap="onLike" 
+         style="margin-left: 20rpx;" src="{{likeIconSrc}}"/>
+  <image class="icon margin-right-sm" bindtap="onMark"
+         src="{{markIconSrc}}"/>
 </view>
 
 <template name="commentTemplate">

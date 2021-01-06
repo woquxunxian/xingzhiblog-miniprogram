@@ -3,7 +3,7 @@
   <view slot="content">归档</view>
 </cu-custom>
 <view class="cu-timeline">
-  <view class="cu-time">昨天</view>
+  <view class="cu-time">2021年1月</view>
   <view class="cu-item">
     <view class="bg-cyan content">
       <view class="cu-capsule radius">
@@ -36,7 +36,7 @@
   </view>
 </view>
 <view class="cu-timeline">
-  <view class="cu-time">12-07</view>
+  <view class="cu-time">2020年12月</view>
   <view class="cu-item">
     <view class="bg-cyan content">
       <view class="cu-capsule radius">

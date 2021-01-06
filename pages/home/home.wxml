@@ -8,10 +8,12 @@
 	<view class="cu-bar bg-white search">
 		<view class="search-form round">
 			<text class="cuIcon-search"></text>
-			<input type="text" placeholder="文章搜索" confirm-type="search"></input>
+			<input type="text" placeholder="设计模式" bindinput="getSearchBoxValue"
+						 value="{{searchValue}}" confirm-type="search"></input>
 		</view>
 		<view class="action">
-			<button class="cu-btn bg-gradual-blue shadow-blur round" style="width:120rpx;">搜索</button>
+			<button class="cu-btn bg-gradual-blue shadow-blur round" 
+							bindtap="onSearch" style="width:120rpx;">搜索</button>
 		</view>
 	</view>	
 	<!-- 按钮栏 -->
@@ -25,12 +27,19 @@
 		<view class='cu-btn round bg-gradual-blue shadow margin-left' bindtap="navToCataegories">
 			分类
     </view>
-		<view class='cu-btn round bg-gradual-blue shadow margin-left' bindtap="navToTimeLine">
+		<view class='cu-btn round bg-gradual-blue shadow margin-left' bindtap="navToTimeLine"
+					wx:if="{{!isSearch}}">
 			归档
+		</view>
+		<view class='cu-btn round bg-gradual-blue shadow margin-left' bindtap="navToHome"
+					wx:if="{{isSearch}}">
+			主页
 		</view>
 	</view>
 	<!-- 文章列表 -->
 	<scroll-view scroll-y class="indexes" 
+	refresher-enabled="true" refresher-threshold="100"
+  refresher-triggered="{{triggered}}" bindrefresherrefresh="refreshData"
 	style="height:calc(100vh - {{CustomBar}}px - 130px);" 
 	scroll-with-animation="true" enable-back-to-top="true">
   <block wx:for="{{blogList}}" wx:key="{{index}}">

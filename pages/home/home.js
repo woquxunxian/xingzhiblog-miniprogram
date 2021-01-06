@@ -1,9 +1,10 @@
 const app = getApp()
 const apiService = require('../../utils/requestUtil')
-const commonUtil = require('../../utils/commonUtil')
+const showToastUtil = require('../../utils/showToastUtil')
 
 Page({
   data: {
+    triggered: false,
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
@@ -16,6 +17,8 @@ Page({
     hidden: true,
     blogInfo: null,
     infoModal:"",
+    searchValue: "", //搜索文本，默认搜索设计模式
+    isSearch: false, //是否进行了搜索行为
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -28,7 +31,7 @@ Page({
 
   showModal(e) {
     if (this.data.blogInfo == null) {
-      this.getAllInfoById();
+      this.getBlogInfo();
     }
     this.setData({
       modalName: e.currentTarget.dataset.target
@@ -41,14 +44,43 @@ Page({
   },
 
   onLoad() {
-    // this.getAllInfoById();
+    // this.getBlogInfo();
     this.getArticleList();
   },
   onReady() {
 
   },
 
-  getAllInfoById(id) {
+  // 在输入时获取搜索框的文本
+  getSearchBoxValue(e) {
+    this.data.searchValue = e.detail.value;
+    console.log(this.data.searchValue)
+  },
+
+  // 搜索按钮事件
+  onSearch() {
+    let articleTitle = this.data.searchValue;
+    // 如果用户没有输入值的话就默认搜索 设计模式 相关的内容
+    if (articleTitle == "") articleTitle = "设计模式";
+    apiService.get('/article/search', {articleTitle,})
+    .then(res => {
+      let blogList = res.data.data;
+      if (blogList.length == 0) {
+        showToastUtil.showNoResultToast();
+        return;
+      }
+      console.log("/article/search",res)
+      this.setData({
+        blogList,
+        isSearch: true
+      })
+    })
+    .catch(err => {
+      showToastUtil.showErrorToast();
+    })
+  },
+
+  getBlogInfo(id) {
     apiService.get('/info/all')
     .then (res => {
       let blogInfo = res.data.data;
@@ -58,7 +90,7 @@ Page({
       app.blogInfo = blogInfo;
     })
     .catch (err => {
-      commonUtil.showErrorToast();
+      showToastUtil.showErrorToast();
     })
   },
 
@@ -66,14 +98,14 @@ Page({
     apiService.get('/article/all')
     .then (res => {
       let blogList = res.data.data;
-      console.log(res)
+      console.log("/article/all",res)
       this.setData({
         blogList,
       })
     })
     .catch (err => {
       console.log(err)
-      commonUtil.showErrorToast();
+      showToastUtil.showErrorToast();
     })
   },
 
@@ -88,6 +120,14 @@ Page({
       ${"&nickName="}${nickName}${"&createTime="}${createTime}`,
     })
   },
+
+  navToHome(e) {
+    this.getArticleList();
+    this.setData({
+      isSearch: false,
+    })
+  },
+
   showInfoModal(e) {
     let target = e.currentTarget.dataset.target;
     this.setData({
@@ -101,10 +141,11 @@ Page({
     })
   },
 
-  showLoading(e) {
-    wx.showToast({
-      title: '数据加载中...',
-      icon: 'none'
+  // 重新请求接口获取数据
+  refreshData(e) {
+    this.getArticleList();
+    this.setData({
+      triggered: false
     })
   },
 

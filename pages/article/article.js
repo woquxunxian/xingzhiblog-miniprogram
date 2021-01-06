@@ -1,5 +1,6 @@
 const app = getApp()
 const apiService = require('../../utils/requestUtil')
+const showToastUtil = require('../../utils/showToastUtil')
 
 Page({
 
@@ -7,8 +8,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    md: "- awdnjwad",
-    articleContent: "<table class='ui celled table'><thead><tr><th>hello</th><th>hi</th><th>哈哈哈</th></tr></thead><tbody><tr><td>斯维尔多</td><td>士大夫</td><td>f啊</td></tr><tr><td>阿什顿发</td><td>非固定杆</td><td>撒阿什顿发</td></tr></tbody></table>"
+    md: "",
+    articleContent: "",
+    likeIconSrc: "../../images/like_grey.png",
+    markIconSrc: "../../images/love_unSelect.png"
   },
 
   /**
@@ -16,12 +19,14 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.data.blogId = options.blogId;
     this.setData({
       nickName: options.nickName,
       avatar: options.avatar,
       createTime: options.createTime
     })
-    this.getBlogDeatil(options.blogId)
+    this.getBlogDeatil(options.blogId);
+    this.updateViewNumber(options.blogId)
   },
 
   getBlogDeatil(blogId) {
@@ -43,5 +48,44 @@ Page({
       articleCommentVOList: res.data.data.articleCommentVOList
     })
   },
+
+  onSend() {
+    showToastUtil.showNoFunctionToast();
+  },
+
+  onLike() {
+    // showToastUtil.showNoFunctionToast();
+    let blogId = this.data.blogId;
+    apiService.put('/article/number/like', {blogId,})
+    .then(res => {
+      if (res.data.data == 1) {
+        this.setData({
+          likeIconSrc: "../../images/like_red.png"
+        })
+      } else {
+        showToastUtil.showErrorToast();
+      }
+    })
+    .catch(err => {
+      console.log(err)
+      showToastUtil.showErrorToast();
+    })
+  },
+
+  updateViewNumber(blogId) {
+    // let blogId = this.data.blogId;
+    apiService.put('/article/number/view', {blogId,})
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+      showToastUtil.showErrorToast();
+    })
+  },
+  
+  onMark() {
+    showToastUtil.showNoFunctionToast();
+  }
 
 })

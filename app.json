@@ -4,8 +4,7 @@
     "pages/index/index",
     "pages/article/article",
     "pages/categories/categories",
-    "pages/timeline/timeline",
-    "pages/test/test"
+    "pages/timeline/timeline"
   ],
   "window": {
     "backgroundTextStyle": "light",
