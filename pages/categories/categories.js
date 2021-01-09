@@ -65,6 +65,32 @@ Page({
   getTagFail(err) {
     console.log(err)
     showToastUtil.showErrorToast();
+  },
+
+  /**
+   * 点击标签跳转主页，展示标签相关的文章
+   */
+  navHome(e) {
+    let tagName = e.currentTarget.dataset.tagname;
+    // let data = {
+    //   'articleTagName': tagName,
+    // }
+    // apiService.get('/tag/article', data)
+    // .then (res => {
+    //   console.log(res)
+    // console.log(tagName)
+      wx.navigateTo({
+        url: '../home/home?tagName=' + tagName + '&tag=' + 1,
+      })
+      // let data = JSON.stringify(res.data);
+      // wx.navigateTo({
+      //   url: '../home/home?data' + data + '&tag=' + 1,
+      // })
+    // })
+    // .catch(err => {
+    //   console.log(err)
+    //   showToastUtil.showErrorToast();
+    // })
   }
 
 });

@@ -2,69 +2,24 @@
   <view slot="backText">返回</view>
   <view slot="content">归档</view>
 </cu-custom>
-<view class="cu-timeline">
-  <view class="cu-time">2021年1月</view>
-  <view class="cu-item">
-    <view class="bg-cyan content">
-      <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-cyan">上午</view>
-        <view class="cu-tag line-white text-white">10:00</view>
+<block wx:for="{{timeLineList}}">
+  <view class="cu-timeline">
+    <view class="cu-item">
+      <view class="bg-cyan content">
+        <view class="cu-capsule radius">
+          <view class="cu-tag bg-white text-cyan">行之</view>
+          <view class="cu-tag line-white text-white">Blog</view>
+        </view>
+        <view class="margin-top">{{item.date}}共发布了{{item.count}}篇</view> 
       </view>
-      <view class="margin-top">【月球】快件已到达月球，准备发往地球</view> 
-    </view>
-    <view class="bg-blue content">
-      <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-blue">上午</view>
-        <view class="cu-tag line-white text-white">10:00</view>
-      </view>
-      <view class="margin-top">【月球】快件已到达月球，准备发往地球</view> 
-    </view>
-    <view class="bg-cyan content">
-      <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-cyan">上午</view>
-        <view class="cu-tag line-white text-white">10:00</view>
-      </view>
-      <view class="margin-top">【月球】快件已到达月球，准备发往地球</view> 
-    </view>
-    <view class="bg-blue content">
-      <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-blue">上午</view>
-        <view class="cu-tag line-white text-white">10:00</view>
-      </view>
-      <view class="margin-top">【月球】快件已到达月球，准备发往地球</view> 
     </view>
   </view>
-</view>
-<view class="cu-timeline">
-  <view class="cu-time">2020年12月</view>
-  <view class="cu-item">
-    <view class="bg-cyan content">
-      <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-cyan">上午</view>
-        <view class="cu-tag line-white text-white">10:00</view>
-      </view>
-      <view class="margin-top">【月球】快件已到达月球，准备发往地球</view> 
+</block>
+<view class="solids-bottom padding-xs flex align-center">
+  <view class="flex-sub text-center">
+    <view class="text-sm padding">
+      <text class="text-grey">“共发布了{{articleNumber}}篇文章”</text>
     </view>
-    <view class="bg-blue content">
-      <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-blue">上午</view>
-        <view class="cu-tag line-white text-white">10:00</view>
-      </view>
-      <view class="margin-top">【月球】快件已到达月球，准备发往地球</view> 
-    </view>
-    <view class="bg-cyan content">
-      <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-cyan">上午</view>
-        <view class="cu-tag line-white text-white">10:00</view>
-      </view>
-      <view class="margin-top">【月球】快件已到达月球，准备发往地球</view> 
-    </view>
-    <view class="bg-blue content">
-      <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-blue">上午</view>
-        <view class="cu-tag line-white text-white">10:00</view>
-      </view>
-      <view class="margin-top">【月球】快件已到达月球，准备发往地球</view> 
-    </view>
+    <!-- <view class="padding">页面辅助信息，次级内容等</view> -->
   </view>
 </view>

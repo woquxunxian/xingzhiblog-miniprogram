@@ -11,7 +11,8 @@ Page({
     md: "",
     articleContent: "",
     likeIconSrc: "../../images/like_grey.png",
-    markIconSrc: "../../images/love_unSelect.png"
+    markIconSrc: "../../images/love_unSelect.png",
+    isLike: false,
   },
 
   /**
@@ -56,20 +57,53 @@ Page({
   onLike() {
     // showToastUtil.showNoFunctionToast();
     let blogId = this.data.blogId;
-    apiService.put('/article/number/like', {blogId,})
-    .then(res => {
-      if (res.data.data == 1) {
+    let isLike = this.data.isLike;
+    // 如果用户已经点赞了
+    if (isLike) {
+      this.setData({
+        likeIconSrc: "../../images/like_grey.png",
+      })
+      apiService.put('/article/number/unlike', {blogId,})
+      .then(res => {
+        if (res.data.data == 1) {
+          this.data.isLike = false;
+        } else {
+          showToastUtil.showErrorToast();
+          this.setData({
+            likeIconSrc: "../../images/like_red.png",
+          })
+        }
+      })
+      .catch(err => {
+        console.log(err)
         this.setData({
-          likeIconSrc: "../../images/like_red.png"
+          likeIconSrc: "../../images/like_red.png",
         })
-      } else {
         showToastUtil.showErrorToast();
-      }
-    })
-    .catch(err => {
-      console.log(err)
-      showToastUtil.showErrorToast();
-    })
+      })
+    } else { // 未点
+      this.setData({
+        likeIconSrc: "../../images/like_red.png",
+      })
+      apiService.put('/article/number/like', {blogId,})
+      .then(res => {
+        if (res.data.data == 1) {
+          this.data.isLike = true;
+        } else {
+          this.setData({
+            likeIconSrc: "../../images/like_grey.png",
+          })
+          showToastUtil.showErrorToast();
+        }
+      })
+      .catch(err => {
+        console.log(err)
+        this.setData({
+          likeIconSrc: "../../images/like_grey.png",
+        })
+        showToastUtil.showErrorToast();
+      })
+    }
   },
 
   updateViewNumber(blogId) {

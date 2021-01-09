@@ -15,7 +15,7 @@
 </view>
 <view class="padding-sm flex flex-wrap">
   <view class="padding-xs" wx:for="{{tagList}}" wx:key>
-    <view class="cu-tag radius light" 
+    <view class="cu-tag radius light" bindtap="navHome" data-tagName="{{item.tagName}}"
     style="background-color:{{item.color}}; color:white">{{item.tagName}}</view>
   </view>
 </view>

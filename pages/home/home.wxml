@@ -96,20 +96,20 @@
 	<view class="info-card">
 		<image class="cu-avatar xl round" style="margin-top: 150rpx" src="{{blogInfo.blogLogo}}"></image>
 		<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-			<view class="cu-item arrow">
-				<button class="cu-btn content" data-target="showBlogInfo" bindtap="showInfoModal">
-					<text class="cuIcon-writefill text-cyan"></text>
+			<view class="cu-item arrow" bindtap="showInfoModal" data-target="showBlogInfo">
+				<button class="cu-btn content">
+					<text class="cuIcon-info text-cyan"></text>
 					<text class="text-grey">关于博客</text>
 				</button>
 			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content" data-target="showBlogCodeHub" bindtap="showInfoModal">
-					<text class="cuIcon-writefill text-cyan"></text>
+			<view class="cu-item arrow" bindtap="showInfoModal" data-target="showBlogCodeHub">
+				<button class="cu-btn content">
+					<text class="cuIcon-github text-cyan"></text>
 					<text class="text-grey">博客开源仓库地址</text>
 				</button>
 			</view>
 			<view class="cu-item arrow">
-				<button class="cu-btn content">
+				<button class="cu-btn content" open-type="feedback">
 					<text class="cuIcon-writefill text-cyan"></text>
 					<text class="text-grey">意见反馈</text>
 				</button>
@@ -126,21 +126,21 @@
 	<view class="info-card">
 		<image class="cu-avatar xl round" style="margin-top: 150rpx" src="{{blogInfo.authorAvatar}}"></image>
 		<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-			<view class="cu-item arrow">
-				<button class="cu-btn content" data-target="showAuthorInfo" bindtap="showInfoModal">
+			<view class="cu-item arrow" data-target="showAuthorInfo" bindtap="showInfoModal">
+				<button class="cu-btn content">
 					<text class="cuIcon-peoplefill text-cyan"></text>
 					<text class="text-grey">关于作者</text>
 				</button>
 			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content" data-target="showCodeHub" bindtap="showInfoModal">
+			<view class="cu-item arrow" data-target="showCodeHub" bindtap="showInfoModal">
+				<button class="cu-btn content">
 					<text class="cuIcon-github text-cyan"></text>
 					<text class="text-grey">作者的开源仓库</text>
 				</button>
 			</view>
-			<view class="cu-item arrow">
-				<button class="cu-btn content" data-target="showComunication" bindtap="showInfoModal">
-					<text class="cuIcon-github text-cyan"></text>
+			<view class="cu-item arrow" data-target="showComunication" bindtap="showInfoModal">
+				<button class="cu-btn content">
+					<text class="cuIcon-communityfill text-cyan"></text>
 					<text class="text-grey">与作者交流</text>
 				</button>
 			</view>
@@ -271,7 +271,7 @@
 						<text selectable='true'>作者微信：{{blogInfo.authorWechatNumber}}</text>
 					</view>
 					<view class="text bg-grey padding radius margin-top-xs" style="width:500rpx">
-						<image class="padding" style="width:400rpx; height:400rpx;" src="{{blogInfo.authorQrcode}}"/>
+						<image class="padding" style="width:400rpx; height:400rpx;" bindlongtap="saveImg" src="{{blogInfo.authorQrcode}}"/>
 					</view>
 				</view>
 			</view>

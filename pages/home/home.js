@@ -43,9 +43,11 @@ Page({
     })
   },
 
-  onLoad() {
+  onLoad(options) {
     // this.getBlogInfo();
-    this.getArticleList();
+    let tag = options.tag;
+    let tagName = options.tagName;
+    this.getArticleList(tag, tagName);
   },
   onReady() {
 
@@ -54,7 +56,7 @@ Page({
   // 在输入时获取搜索框的文本
   getSearchBoxValue(e) {
     this.data.searchValue = e.detail.value;
-    console.log(this.data.searchValue)
+    // console.log(this.data.searchValue)
   },
 
   // 搜索按钮事件
@@ -94,7 +96,39 @@ Page({
     })
   },
 
-  getArticleList(e) {
+  getArticleList(tag, tagName) {
+    if (tag == 1) {
+       this.getArticleListByTagName(tagName);
+       return;
+    }
+    this.getAllArticleList();
+  },
+
+  getArticleListByTagName(tagName) {
+    let data = {
+      'articleTagName': tagName, 
+    }
+    apiService.get('/tag/article', data)
+    .then (res => {
+      let blogList = res.data.data;
+      if (blogList.length == 0) {
+        showToastUtil.showNoResultToast();
+        this.setData({
+          isSearch: true,
+        })
+      }
+      console.log("/tag/article",res)
+      this.setData({
+        blogList,
+      })
+    })
+    .catch (err => {
+      console.log(err)
+      showToastUtil.showErrorToast();
+    })
+  },
+
+  getAllArticleList() {
     apiService.get('/article/all')
     .then (res => {
       let blogList = res.data.data;
@@ -146,6 +180,35 @@ Page({
     this.getArticleList();
     this.setData({
       triggered: false
+    })
+  },
+
+  saveImg() {
+    wx.getSetting({
+      success: res => {
+        wx.authorize({
+          scope: 'scope.writePhotosAlbum',
+          success: res => {
+            console.log("授权成功");
+            var imgUrl = this.data.blogInfo.authorQrcode;
+            wx.downloadFile({//下载文件资源到本地，客户端直接发起一个 HTTP GET 请求，返回文件的本地临时路径
+              url: imgUrl,
+              success: res => {
+                // 下载成功后再保存到本地
+                wx.saveImageToPhotosAlbum({
+                  filePath: res.tempFilePath,//返回的临时文件路径，下载后的文件会存储到一个临时文件
+                  success: function (res) {
+                    wx.showToast({
+                      title: '成功保存到相册',
+                      icon: 'success'
+                    })
+                  }
+                })
+              }
+            })
+          }
+        })
+      }
     })
   },
 
