@@ -28,9 +28,9 @@
     <block wx:for="{{articleCommentVOList}}">
       <view class="comment radius shadow bg-white padding-sm margin-top-sm">
         <view class="info">
-          <image class="cu-avatar round sm margin-left-sm" src="{{item.userListVo.avatar}}"></image>
+          <image class="cu-avatar round sm margin-left-sm" src="{{item.wxAccountVO.avatar}}"></image>
           <view class="name margin-left-sm">
-            <view class="text-sm">{{item.userListVo.userName}}</view>
+            <view class="text-sm">{{item.wxAccountVO.nickName}}</view>
             <view class="text-gray text-sm">{{item.createTime}}</view>
           </view>
         </view>
@@ -49,10 +49,10 @@
 <view class="cu-bar tabbar bg-white shadow foot margin-left-sm" style="width:95%">
   <view class="search-form round">
     <input type="text" placeholder="输入评论" confirm-type="search" class="padding-left-sm"
-           bindinput="getSearchBoxValue" value="{{searchValue}}"/>
+           bindinput="getInputBoxValue" value="{{inputValue}}"/>
   </view>
   <button class="cu-btn bg-gradual-blue shadow-blur round" style="width:120rpx;"
-          bindtap="onSend">发送</button>
+          bindtap="onSend" open-type="getUserInfo">发送</button>
   <image class="icon margin-right-sm" bindtap="onLike" 
          style="margin-left: 20rpx;" src="{{likeIconSrc}}"/>
   <image class="icon margin-right-sm" bindtap="onMark"
@@ -62,9 +62,9 @@
 <template name="commentTemplate">
   <view class="comment radius shadow bg-white padding-sm margin-top-sm">
     <view class="info">
-      <image class="cu-avatar round sm margin-left-sm" src="{{userListVo.avatar}}"></image>
+      <image class="cu-avatar round sm margin-left-sm" src="{{wxAccountVO.avatar}}"></image>
       <view class="name margin-left-sm">
-        <view class="text-sm">{{userListVo.userName}}</view>
+        <view class="text-sm">{{wxAccountVO.nickName}}</view>
         <view class="text-gray text-sm">{{createTime}}</view>
       </view>
     </view>
@@ -76,3 +76,18 @@
     </block> -->
   </view>
 </template>
+
+<view class="cu-modal {{modalName=='Modal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">请先登录</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <button class="cu-btn bg-gradual-green shadow-blur round"
+          bindtap="wxLogin" open-type="getUserInfo">微信登录</button>
+    </view> 
+  </view>
+</view>

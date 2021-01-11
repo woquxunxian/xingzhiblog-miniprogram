@@ -11,20 +11,23 @@ const request = (url, options) => {
             method: options.method,
             data: options.data,
             header: {
-                'content-type': options.isObj ? 'application/json' : 'application/x-www-form-urlencoded',
+                'content-type': 'application/json',
             },
             success(res) {
                 console.log(url + " : success");
                 if (res.data.code == 1) {
                     resolve(res)
+                    console.log(url, res)
                 } else {
                     reject(resolve)
+                    console.log(url, res)
                 }
             },
             fail(error) {
                 console.log(url + " : fail");
                 reject(error.data)
-            }, complete: () => {
+            }, 
+            complete: () => {
                 setTimeout(() => {
                     wx.hideLoading();
                 }, 100);

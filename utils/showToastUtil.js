@@ -22,8 +22,27 @@ const showNoFunctionToast = () => {
   })
 }
 
+const showSucceesToast = () => {
+  wx.showToast({
+    title: '操作成功啦',
+    icon: 'none',
+    duration: 2200
+  })
+}
+
+// 自定义title
+const showToast = (title) => {
+  wx.showToast({
+    title,
+    icon: 'none',
+    duration: 2200
+  })
+}
+
 module.exports = {
   showErrorToast,
   showNoResultToast,
   showNoFunctionToast,
+  showSucceesToast,
+  showToast,
 }
