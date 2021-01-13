@@ -86,6 +86,10 @@ Page({
         - 缓存的id不在了，重新请求获取id
    */
   wxLogin() {
+    this.hideModal();
+    wx.showLoading({
+      title: '登陆中...',
+    })
     wx.login({
       timeout: 2000,
       success: (result) => {
@@ -132,11 +136,12 @@ Page({
       this.data.isLogin = true;
       this.storageUserId(id)
       showToastUtil.showToast("登录成功啦~~");
-      this.hideModal();
+      wx.hideLoading();
       this.getUserLikeStatus(id);
     })
     .catch (err => {
       // console.log(err)
+      wx.hideLoading();
       showToastUtil.showErrorToast();
     })
   },
@@ -243,11 +248,16 @@ Page({
   },
 
   onSend() {
-    let id = wx.getStorageSync('userId');
-    if(id) {
-      this.sendComment(id);
-    } else {
-      this.showModal();
+    let input = this.data.inputValue ;
+    if (input == "" || input.trim().length == 0) {
+        showToastUtil.showToast("要输入内容噢~")
+    }else{
+      let id = wx.getStorageSync('userId');
+      if(id) {
+        this.sendComment(id);
+      } else {
+        this.showModal();
+      }
     }
   },
 
