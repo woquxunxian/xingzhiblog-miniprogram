@@ -22,3 +22,7 @@
   width: 40rpx;
   height: 40rpx;
 }
+
+.repleyInput {
+  width: 600rpx;
+}

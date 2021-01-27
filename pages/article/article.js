@@ -19,8 +19,10 @@ Page({
     isLogin: false,
     // 用户是否已经点赞
     isLike: false,
-    // 输入框
+    // 父评论输入框
     inputValue: "",
+    // 回复输入框
+    repleyInputValue: "",
     // 用户个人信息
     userInfo: "",
     // 是否展示模态框
@@ -222,6 +224,30 @@ Page({
     }) 
   },
 
+  sendRepleyComment(userId) {
+    let data = {
+      "blogId": this.data.blogId,
+      "userId": userId,
+      "content": this.data.repleyInputValue,
+      "parentCommentId": this.data.commentId
+    }
+    // console.log(data)
+    apiService.get('/article/comment/son',data)
+    .then(res => {
+      // console.log(res)
+      showToastUtil.showSucceesToast();
+      this.getCommentByBlogId(this.data.blogId);
+      this.setData({
+        repleyInputValue: null,
+        repleyModalName: 'missyou'
+      })
+    })
+    .catch(err => {
+      // console.log(err)
+      showToastUtil.showErrorToast();
+    }) 
+  },
+
   getCommentByBlogId(blogId) {
     apiService.get('/article/comment/' + blogId)
     .then (res => {
@@ -247,14 +273,27 @@ Page({
     })
   },
 
-  onSend() {
-    let input = this.data.inputValue ;
+  onSend(e) { // 这里写得不好，考完试回来重构下
+    let fun = e.currentTarget.dataset.fun;
+    let input = '';
+    if (fun == 'parentComment') { // 判断是父评论还是子评论
+      input = this.data.inputValue;
+    } else if (fun == 'sonComment'){
+      input = this.data.repleyInputValue;
+    }
+    console.log(input)
     if (input == "" || input.trim().length == 0) {
         showToastUtil.showToast("要输入内容噢~")
     }else{
       let id = wx.getStorageSync('userId');
       if(id) {
-        this.sendComment(id);
+        if (fun == 'parentComment') {
+          this.sendComment(id);
+        } else if (fun == 'sonComment') {
+          this.sendRepleyComment(id);
+        } else {
+          showToastUtil.showErrorToast();
+        }
       } else {
         this.showModal();
       }
@@ -280,6 +319,21 @@ Page({
     //   // 没登陆就先登录，只执行登录操作
     //   this.wxLogin();
     // }
+  },
+
+  onRepley(e){
+    // showToastUtil.showNoFunctionToast();
+    console.log(e)
+    this.setData({
+      repleyModalName: 'bottomModal'
+    })
+    this.data.commentId = e.currentTarget.dataset.commentid;
+  },
+
+  hideRepleyModal() {
+    this.setData({
+      repleyModalName: 'noWay'
+    })
   },
 
   updateLikeStatus() {
@@ -348,9 +402,14 @@ Page({
     showToastUtil.showNoFunctionToast();
   },
 
-   // 在输入时获取搜索框的文本
-   getInputBoxValue(e) {
+  // 在输入时获取搜索框的文本
+  getInputBoxValue(e) {
     this.data.inputValue = e.detail.value;
+  },
+
+  // 在输入时获取搜索框的文本
+  getRepleyInputBoxValue(e) {
+    this.data.repleyInputValue = e.detail.value;
   },
 
 })

@@ -1,4 +1,3 @@
-
 <view scroll-y class="DrawerPage {{modalName=='showBlogInfo'?'show':''}} {{modalName=='showAuthorInfo'?'show':''}}">
 	<!-- 顶部栏 -->
 	<cu-custom bgColor="bg-gradual-blue">

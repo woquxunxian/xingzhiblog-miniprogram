@@ -37,6 +37,8 @@
         <view class="content margin-left-sm margin-top-sm">
           {{item.commentContent}}
         </view>
+        <view class="text-sm text-blue margin-left-sm margin-top-sm" bindtap="onRepley"
+              data-commentId="{{item.id}}">回复</view>
         <block wx:for="{{item.articleCommentVOList}}">
           <template is="commentTemplate" data="{{...item}}"/>
         </block>
@@ -45,6 +47,21 @@
     </block>
   </view>
 </view>
+
+<!-- 子评论回复输入框 -->
+<view class="cu-modal bottom-modal {{repleyModalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-green" bindtap="hideRepleyModal">取消</view>
+      <view class="action text-blue" bindtap="onSend" data-fun='sonComment'>发送</view>
+      </view>
+      <view class="margin-xl">
+        <input type="text" placeholder="输入评论(50字内)" confirm-type="search" class="padding-left-sm repleyInput"
+               bindinput="getRepleyInputBoxValue" value="{{repleyInputValue}}" maxlength="50"/>
+      </view>
+  </view>
+</view>
+
 <!-- 底部评论输入、点赞、收藏栏 -->
 <view class="cu-bar tabbar bg-white shadow foot margin-left-sm" style="width:95%">
   <view class="search-form round">
@@ -52,7 +69,7 @@
            bindinput="getInputBoxValue" value="{{inputValue}}"/>
   </view>
   <button class="cu-btn bg-gradual-blue shadow-blur round" style="width:120rpx;"
-          bindtap="onSend" open-type="getUserInfo">发送</button>
+          bindtap="onSend" open-type="getUserInfo" data-fun='parentComment'>发送</button>
   <image class="icon margin-right-sm" bindtap="onLike" 
          style="margin-left: 20rpx;" src="{{likeIconSrc}}"/>
   <image class="icon margin-right-sm" bindtap="onMark"

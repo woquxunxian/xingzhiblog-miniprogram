@@ -132,7 +132,7 @@ Page({
     apiService.get('/article/all')
     .then (res => {
       let blogList = res.data.data;
-      console.log("/article/all",res)
+      // console.log("/article/all",res)
       this.setData({
         blogList,
       })
