@@ -15,7 +15,7 @@ const request = (url, options) => {
             },
             success(res) {
                 console.log(url + " : success");
-                if (res.data.code == 1) {
+                if (res.data.code == 0) {
                     resolve(res)
                     console.log(url, res)
                 } else {

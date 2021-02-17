@@ -12,7 +12,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    blogInfo: null,    
-    baseUrl: "http://localhost:8081/api",
+    blogInfo: null,
+    baseUrl: "http://localhost:88/api",
   }
 })

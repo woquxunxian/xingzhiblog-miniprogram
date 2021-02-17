@@ -23,6 +23,7 @@
     "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -36,8 +37,7 @@
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "useApiHostProcess": true
+    "minifyWXSS": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.13.0",

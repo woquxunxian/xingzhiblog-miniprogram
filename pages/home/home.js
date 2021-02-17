@@ -5,6 +5,7 @@ const showToastUtil = require('../../utils/showToastUtil')
 Page({
   data: {
     triggered: false,
+    blogList: [],
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
@@ -132,7 +133,7 @@ Page({
     apiService.get('/article/all')
     .then (res => {
       let blogList = res.data.data;
-      // console.log("/article/all",res)
+      console.log("res.data.data", res.data.data)
       this.setData({
         blogList,
       })

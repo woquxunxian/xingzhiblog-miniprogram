@@ -45,8 +45,8 @@
 		<view class="cu-card case">
   		<view class="cu-item shadow">
 				<view class="image" catchtap="navToArticle"
-					data-avatar="{{item.userListVo.avatar}}" data-createTime="{{item.createTime}}" 
-					data-nickName="{{item.userListVo.userName}}" data-blogId="{{item.id}}">
+					data-avatar="{{item.authorAvatar}}" data-createTime="{{item.createTime}}" 
+					data-nickName="{{item.authorName}}" data-blogId="{{item.id}}">
 				<image src="{{item.image}}" mode="widthFix"></image>
       		<view class="cu-bar bg-shadeBottom">
         		<text class="text-cut">{{item.title}}</text>
@@ -60,9 +60,9 @@
 				</view>
     		<view class="cu-list menu-avatar">
       		<view class="cu-item">
-        		<image class="cu-avatar round lg" src="{{item.userListVo.avatar}}"/>
+        		<image class="cu-avatar round lg" src="{{item.authorAvatar}}"/>
         		<view class="content flex-sub">
-          		<view class="text-grey">{{item.userListVo.userName}}</view>
+          		<view class="text-grey">{{item.authorName}}</view>
          			<view class="text-gray text-sm flex justify-between">{{item.createTime}}
             		<view class="text-gray text-sm">
 									<text class="cuIcon-attentionfill margin-left-xs"></text> {{item.viewCount>999?"999+":item.viewCount}}
